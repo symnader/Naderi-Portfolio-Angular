@@ -1,0 +1,17 @@
+<div class="card form-container ">
+  <h5>Advanced</h5>
+  <p-fileUpload [customUpload]="true" [multiple]="false"
+    (uploadHandler)="onUpload($event)" [showCancelButton]="false"
+    accept="image/*">
+  </p-fileUpload>
+
+  <button class="ml-70" type="submit" pButton label='Save To Store' [disabled]="!click_upload"
+    (click)="clickSaveHandler()" style="margin: 10px 0 0 15px ;">
+  </button>
+</div>
+
+<div style="float: right">
+  <button class="ml-70" type="submit" pButton label='Next Step'  [disabled]="!click_saveToStore"
+  (click)="nextHandler()">
+  </button>
+</div>

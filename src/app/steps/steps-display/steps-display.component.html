@@ -1,0 +1,39 @@
+<div class="card form-container">
+  <h2>Summary Your Selection :</h2>
+  <br />
+
+  <div>
+    <div *ngIf=" persons != null">
+      <div style="font-size: 1.1em; font-weight: bold; color: 'blue';"> Information of the selected person </div>
+      <ul *ngFor="let person of persons | async">
+        <span>Code : </span> <span class="font-red"> {{ person.code}} </span>
+        <span>  |  Name : </span> <span class="font-red"> {{ person.name}} </span>
+        <span>  |  Family : </span> <span class="font-red"> {{ person.family}} </span>
+        <span>  |  Age : </span> <span class="font-red"> {{ person.age}} </span>
+        <span>  |  Job : </span> <span class="font-red"> {{ person.job}} </span>
+      </ul>
+    </div>
+  </div>
+
+  <div>
+    <div *ngIf="  uplImage != null" >
+      <div style="font-size: 1.1em; font-weight: bold; color: 'blue';"> Uploaded file information </div>
+      <ul *ngFor="let image of uplImage | async">
+        <li><span>File Name : </span> {{ image.name}}</li>
+        <li><span>File Size : </span> {{ image.size}}</li>
+        <li><span>File type : </span> {{ image.type}}</li>
+      </ul>
+    </div>
+
+    <div *ngIf="  formInfo != null" >
+      <div style="font-size: 1.2em; font-weight: bold; color: 'blue';"> Information entry form </div>
+      <ul *ngFor="let form of formInfo | async">
+        <li><span>Price  : </span> {{ form.price}}</li>
+        <li><span>Date  : </span> {{ form.rangeDate}}</li>
+        <li><span>Status : </span> {{ form.city}}</li>
+        <li><span>Letters : </span> {{ form.letters}}</li>
+      </ul>
+    </div>
+  </div>
+
+</div>

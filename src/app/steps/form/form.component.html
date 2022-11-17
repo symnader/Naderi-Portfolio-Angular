@@ -1,0 +1,61 @@
+    <form [formGroup]="angForm" novalidate class="form-container">
+
+      <div>
+        <div class="row">
+          <div>
+            <span class="p-float-label">
+              <input id="price-input" type="number" pInputText formControlName="price">
+              <label for="price-input">Price</label>
+            </span>
+            <div *ngIf="angForm.controls['price'].invalid && (angForm.controls['price'].dirty || angForm.controls['price'].touched)" class="alert alert-danger">
+              <div class="error" *ngIf="angForm.controls['price'].errors.required">
+                Price is required.
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <span class="p-float-label">
+              <p-calendar id="range-Date" [readonlyInput]="true" inputId="range-Date" formControlName="rangeDate"></p-calendar>
+              <label for="range-Date">Renge Date</label>
+              <!-- <p-calendar [minDate]="minDate" [maxDate]="maxDate" [readonlyInput]="true" inputId="min-max"  pInputText formControlName="rangeDate"></p-calendar> -->
+            </span>
+            <div *ngIf="angForm.controls['rangeDate'].invalid && (angForm.controls['rangeDate'].dirty || angForm.controls['rangeDate'].touched)" class="alert alert-danger">
+              <div class="error" *ngIf="angForm.controls['rangeDate'].errors.required">
+                Date is required.
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <span class="p-float-label">
+              <p-dropdown id="status-sel" [options]="status" formControlName="city" optionLabel="name"></p-dropdown>
+            </span>
+          </div>
+        </div>
+
+        <div class="row">
+          <span class="p-float-label">
+            <textarea rows="5" cols="88" pInputTextarea formControlName="letters"></textarea>
+          </span>
+        </div>
+
+      </div>
+
+      <button class="ml-70" type="submit" pButton [disabled]="!angForm.valid" label='Save To Store'
+        (click)="saveToStore()">
+      </button>
+
+    </form>
+
+    <div style="float: right">
+      <button class="ml-70" type="submit" pButton label='Next Step' [disabled]="!click_saveToStore"
+      (click)="nextHandler()">
+      </button>
+    </div>
+
+    <div style="float: right">
+      <button class="ml-70" type="submit" pButton label='Back Step'
+      (click)="backHandler()">
+      </button>
+    </div>

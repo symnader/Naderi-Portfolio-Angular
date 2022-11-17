@@ -1,0 +1,48 @@
+<div class="card form-container">
+  <div *ngIf="personSelected != null"  style="margin-top: 10px;">
+    <span>'you selected : '</span>
+    <span style="color: 'red'; font-size: 1.2em; font-weight: bold;">
+      {{ personSelected.name + '  ' + personSelected.family }}
+    </span>
+  </div>
+  <p-table [value]="persons" [(selection)]="personSelected" dataKey="code" [tableStyle]="{'min-width': '50rem'}">
+      <ng-template pTemplate="header">
+          <tr>
+              <th style="width: 4rem"></th>
+              <th>Code</th>
+              <th>Name</th>
+              <th>Family</th>
+              <th>Age</th>
+              <th>Job</th>
+          </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-persons>
+          <tr>
+              <td>
+                  <p-tableRadioButton [value]="persons"></p-tableRadioButton>
+              </td>
+              <td>{{persons.code}}</td>
+              <td>{{persons.name}}</td>
+              <td>{{persons.family}}</td>
+              <td>{{persons.age}}</td>
+              <td>{{persons.job}}</td>
+          </tr>
+      </ng-template>
+  </p-table>
+
+  <button class="ml-70" type="submit" pButton label='Save To Store' [disabled]="personSelected == null"
+  (click)="saveToStore()" style="margin-top: 5px;">
+  </button>
+</div>
+
+<div style="float: right">
+  <button class="ml-70" type="submit" pButton label='Next Step' [disabled]="!click_saveToStore"
+  (click)="nextHandler()">
+  </button>
+</div>
+
+<div style="float: right; margin-right: 50px;">
+  <button class="ml-70" type="submit" pButton label='Back Step'
+  (click)="backHandler()">
+  </button>
+</div>
